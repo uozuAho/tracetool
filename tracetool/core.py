@@ -9,6 +9,12 @@ def open_tracefile(tracefile, reader):
     return _get_packet_generator(tracefile, reader)
 
 
+def _get_packet_generator(tracefile, reader_file):
+    reader = imp.load_source('', reader_file)
+    for packet in reader.packetise(tracefile):
+        yield reader.parse(packet)
+
+
 def get_data_keys(reader):
     """ Get the expected data fields from the reader """
     reader = imp.load_source('', reader)
@@ -27,10 +33,13 @@ def get_data_key_order(reader):
         return None
 
 
-def _get_packet_generator(tracefile, reader_file):
-    reader = imp.load_source('', reader_file)
-    for packet in reader.packetise(tracefile):
-        yield reader.parse(packet)
+def get_plot_options(reader):
+    """ Get any plotting options from the reader """
+    reader = imp.load_source('', reader)
+    try:
+        return reader.DATA_PLOT_OPTIONS
+    except AttributeError:
+        return None
 
 
 if __name__ == '__main__':

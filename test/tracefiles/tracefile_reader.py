@@ -17,6 +17,18 @@ DATA_KEY_ORDER = [
     'checksum_xor'
 ]
 
+# Optional: specify which data is to be included in
+# graphical plots
+DATA_PLOT_OPTIONS = {
+    'idx': ('hide'),
+    'volts': ('raw'),
+    'amps': ('raw'),
+    'duty': ('raw'),
+    'errors': ('accumulate'),
+    'checksum_sum': ('hide'),
+    'checksum_xor': ('hide')
+}
+
 
 def packetise(path):
     """ Generate packets from the given binary file """
