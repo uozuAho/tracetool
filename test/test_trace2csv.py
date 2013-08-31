@@ -8,30 +8,26 @@ sys.path.append('../')
 from tracetool import trace2csv
 
 
-def main():
-    pass
+INPUT_FILE_1 = 'tracefiles/tracefile_1.tracefile'
+INPUT_FILE_2 = 'tracefiles/tracefile_2.tracefile'
+OUTPUT_FILE_1 = 'tracefiles/tracefile_1.csv'
+OUTPUT_FILE_2 = 'tracefiles/tracefile_2.csv'
+EXPECTED_OUTPUT_1 = 'tracefiles/tracefile_1_expected_csv.csv'
+EXPECTED_OUTPUT_2 = 'tracefiles/tracefile_2_expected_csv.csv'
+READER_FILE = 'tracefiles/tracefile_reader.py'
 
 
 class Trace2CsvTests(unittest.TestCase):
-    def setUp(self):
-        self.test_file_1 = 'tracefiles/tracefile_1.tracefile'
-        self.test_file_2 = 'tracefiles/tracefile_2.tracefile'
-        trace2csv.log2csv(self.test_file_1, include_invalid_packets=False)
-        trace2csv.log2csv(self.test_file_2, include_invalid_packets=False)
-
     def test_file_1_expected_output(self):
-        trace2csv_output = 'tracefiles/tracefile_1.csv'
-        expected_output = 'tracefiles/tracefile_1_expected_csv.csv'
-        self.assertTrue(filecmp.cmp(trace2csv_output, expected_output))
+        trace2csv.trace2csv(INPUT_FILE_1, READER_FILE)
+        self.assertTrue(filecmp.cmp(OUTPUT_FILE_1, EXPECTED_OUTPUT_1))
 
     def test_file_2_expected_output(self):
-        trace2csv_output = 'tracefiles/tracefile_2.csv'
-        expected_output = 'tracefiles/tracefile_2_expected_csv.csv'
-        self.assertTrue(filecmp.cmp(trace2csv_output, expected_output))
+        trace2csv.trace2csv(INPUT_FILE_2, READER_FILE)
+        self.assertTrue(filecmp.cmp(OUTPUT_FILE_2, EXPECTED_OUTPUT_2))
 
     def tearDown(self):
-        os.remove('tracefiles/tracefile_1.csv')
-        os.remove('tracefiles/tracefile_2.csv')
-
-if __name__ == '__main__':
-    main()
+        if os.path.isfile(OUTPUT_FILE_1):
+            os.remove(OUTPUT_FILE_1)
+        if os.path.isfile(OUTPUT_FILE_2):
+            os.remove(OUTPUT_FILE_2)

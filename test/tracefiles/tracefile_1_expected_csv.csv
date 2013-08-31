@@ -1,4 +1,7 @@
 idx,volts,amps,duty,errors,checksum_sum,checksum_xor
+,,,,,,,bad pkt len: 19
+,,,,,,,bad pkt len: 32
+,,,,,,,bad pkt len: 49
 113,0,0,0,0,113,113,
 114,0,0,0,0,114,114,
 115,0,0,0,0,115,115,
@@ -58,3 +61,7 @@ idx,volts,amps,duty,errors,checksum_sum,checksum_xor
 169,32,46,0,0,247,167,
 170,0,52,0,0,222,158,
 171,0,52,0,0,223,159,
+,,,,,,,bad pkt len: 2
+,,,,,,,bad pkt len: 49
+,,,,,,,bad pkt len: 32
+,,,,,,,bad pkt len: 14
