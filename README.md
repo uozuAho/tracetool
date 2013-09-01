@@ -20,7 +20,7 @@ limitations
 
 alternatives/inspirations
 -------------------------
-http://micrium.com/tools/ucprobe/overview/ (not free)
-https://lttng.org/ (linux only)
-http://www.mentor.com/embedded-software/sourcery-tools/sourcery-analyzer/ (linux only)
-ARM ETM ETB - over my head
+- http://micrium.com/tools/ucprobe/overview/ (not free)
+- https://lttng.org/ (linux only)
+- http://www.mentor.com/embedded-software/sourcery-tools/sourcery-analyzer/ (linux only)
+- ARM ETM ETB - over my head
