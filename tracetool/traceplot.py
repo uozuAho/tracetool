@@ -1,3 +1,7 @@
+""" Graphically plot data stored in a trace file.
+    Requires matplotlib.
+"""
+
 import pylab
 import sys
 
@@ -20,6 +24,9 @@ def main():
 
 
 def traceplot(tracefile, reader):
+    """ Use the specified reader to extract & plot data
+        stored in the given tracefile
+    """
     data = _tracefile_to_data_arrays(tracefile, reader)
     plot_options = core.get_plot_options(reader)
 

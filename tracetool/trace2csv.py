@@ -1,3 +1,5 @@
+""" Convert a tracefile to a csv file """
+
 import core
 
 import sys
@@ -20,6 +22,9 @@ def main():
 
 
 def trace2csv(tracefile, reader):
+    """ Use the specified reader to convert the given
+        tracefile to a csv file
+    """
     out_path = os.path.splitext(tracefile)[0]+'.csv'
     data_keys = core.get_data_keys(reader)
     data_key_order = core.get_data_key_order(reader)
@@ -41,6 +46,7 @@ def trace2csv(tracefile, reader):
 
 
 def packet2csv_row(packet, num_fields, data_key_order):
+    """ Turn a trace packet into a csv row string """
     out_str = ''
     if data_key_order is not None:
         # This is easy, data key order lets us know what's expected
